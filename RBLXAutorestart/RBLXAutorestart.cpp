@@ -31,6 +31,7 @@ int main(int argc, char* argv[])
         exit(0);
     }
 
+    //-- Topmost
     ::SetWindowPos(GetConsoleWindow(), HWND_TOPMOST, 0, 0, 0, 0, SWP_DRAWFRAME | SWP_NOMOVE | SWP_NOSIZE | SWP_SHOWWINDOW);
     ::ShowWindow(GetConsoleWindow(), SW_NORMAL);
 
@@ -159,6 +160,13 @@ int main(int argc, char* argv[])
 
         //-- while (now - start) <= time
         while (std::chrono::duration_cast<std::chrono::minutes>(std::chrono::steady_clock::now() - start).count() <= Functions.RestartTime) {
+
+            if (Functions.MinimizeRoblox && FindWindow(NULL, "Roblox"))
+            {
+                for (int i = 0; i < Functions.CountInstances(); i++) {
+                    ShowWindow(FindWindow(NULL, "Roblox"), SW_FORCEMINIMIZE);
+                }
+            }
 
             //-- attempt to detect errors
             if (Functions.DetectSynapse && FindWindow(NULL, "Synapse X - Crash Reporter") || Functions.DetectErrors && Roblox.FindError())
