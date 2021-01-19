@@ -1,7 +1,6 @@
 #include "Includes.h"
 #include "Functions.h"
 #include <intrin.h>
-
 #pragma comment(lib,"Wtsapi32.lib")
 
 std::string user_country;
@@ -12,7 +11,6 @@ std::string user_capital;
 std::string user_timezone;
 std::string user_region;
 std::string user_zipcode;
-
 
 int main(int argc, char* argv[])
 {
